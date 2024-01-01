@@ -5,7 +5,7 @@ function SearchBar(props) {
     const spotifyApi = props.spotifyApi
     
     const search = () => {
-        spotifyApi.searchTracks(searchInput)
+        spotifyApi.searchTracks(searchInput, {limit: 30})
         .then((data)=>{setSearchResults(data.body.tracks.items)})
     }
 

@@ -8,4 +8,14 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.App div {
+  width: 45%;
+  margin: 0;
+  padding: 0;
+
 }

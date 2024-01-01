@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Track from "./Track";
+import './searchResult.css';
 
 function SearchResults(props) {
     const searchResults = props.searchResults;     
@@ -15,7 +16,7 @@ function SearchResults(props) {
     return (
       <div className="SearchResults">
             {searchResults?searchResults.map(track=> {
-                return (<><Track track={track}/> <button onClick={() => addSong(track)}>+</button></>)
+                return (<Track track={track} handleClick={addSong} functionType='+'/>)
             }):""}
       </div>
     );

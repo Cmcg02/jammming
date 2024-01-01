@@ -1,0 +1,29 @@
+.Track {
+    box-sizing: border-box;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5em 0;
+    border: 1px solid lightslategray;
+    border-radius: 0.5em;
+    overflow: hidden;
+    background-color: #535b6b;
+    font-size: small;
+}
+
+.Track img {
+    height: 3rem;
+}
+
+.Track button {
+    background: none;
+    border: none;
+    color: white;
+    text-shadow: 1px 1px 0 black;
+}
+
+.Track button:hover {
+    cursor: pointer;
+    color: gray;
+}
