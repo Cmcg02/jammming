@@ -33,12 +33,11 @@ function App() {
 
         <div className='Search'>
           <SearchBar searchInput={searchInput} setSearchInput={setSearchInput} setSearchResults={setSearchResults} spotifyApi={spotifyApi}/>
-          <SearchResults searchResults={searchResults} setPlaylistTracks={setPlaylistTracks} playlistTracks={playlistTracks}/>
-
+          <SearchResults searchResults={searchResults} setPlaylistTracks={setPlaylistTracks} playlistTracks={playlistTracks} setSearchInput={setSearchInput} searchInput={searchInput}/>
         </div>
 
         <div className='Edit'>
-          <Playlist/>
+          <Playlist playlistTracks={playlistTracks} setPlaylistTracks={setPlaylistTracks} spotifyApi={spotifyApi}/>
         </div>
 
       </>):(<>

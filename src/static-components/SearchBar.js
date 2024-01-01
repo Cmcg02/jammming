@@ -8,7 +8,7 @@ function SearchBar(props) {
         spotifyApi.searchTracks(searchInput, {limit: 30})
         .then((data)=>{setSearchResults(data.body.tracks.items)})
     }
-
+ 
     return (
       <div className="SearchBar">
         <input
