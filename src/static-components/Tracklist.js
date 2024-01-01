@@ -1,9 +1,11 @@
+import { useEffect } from "react";
 import Track from "./Track";
 
-function Tracklist() {
+function Tracklist(props) {
+    const tracks = props.tracks
+
     return (
       <div className="Tracklist">
-        <Track object={{name:'smells like teen spirit', artist:'nirvana', img:'smile'}}/>
       </div>
     );
   }
