@@ -45,6 +45,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Jammming</h1>
       {loggedIn?(<>
 
         <div className='Search'>
@@ -53,10 +54,8 @@ function App() {
         </div>
 
         <div className='Edit'>
-          <Playlist playlistTracks={playlistTracks} setPlaylistTracks={setPlaylistTracks}  spotifyApi={spotifyApi} setPlaylistDescription={setPlaylistDescription} setPlaylistName={setPlaylistName} setSearchInput={setSearchInput} searchInput={searchInput}/>
-          <button onClick={save}>Save</button>
+          <Playlist playlistTracks={playlistTracks} setPlaylistTracks={setPlaylistTracks}  spotifyApi={spotifyApi} setPlaylistDescription={setPlaylistDescription} setPlaylistName={setPlaylistName} setSearchInput={setSearchInput} searchInput={searchInput} save={save}/>
         </div>
-
       </>):(<>
         <Authorize spotifyApi={spotifyApi}/>
       </>)}

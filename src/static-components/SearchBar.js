@@ -22,10 +22,16 @@ function SearchBar(props) {
     return (
       <div className="SearchBar">
         <input
+            id="search-input"
             className="text-input"
             placeholder='Search For Song'
             type='text'
             onChange={event => setSearchInput(event.target.value)}
+            onKeyDown={event => {
+              if(event.code == 'Enter'){
+                search()
+              }
+            }}
         />
         <button className="medium-btn" onClick={search}>search</button>
       </div>

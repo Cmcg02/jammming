@@ -1,4 +1,5 @@
 import Track from "./Track";
+import './Playlist.css'
 
 function Playlist(props) {
   const playlistTracks = props.playlistTracks 
@@ -7,6 +8,7 @@ function Playlist(props) {
   const setPlaylistDescription = props.setPlaylistDescription;
   const setSearchInput = props.setSearchInput;
   const searchInput = props.searchInput;
+  const save = props.save;
 
   const removeSong = (track) => {
     console.log(track)
@@ -22,7 +24,7 @@ function Playlist(props) {
   }
 
   return (
-    <div className="Playlist">
+    <>
       <input
         className="text-input"
         placeholder='Playlist Name'
@@ -35,11 +37,15 @@ function Playlist(props) {
         type='text'
         onChange={event => setPlaylistDescription(event.target.value)}
       />
+      
+      <button onClick={save} id='save-button'>save</button>
+      <div className='PlaylstTracks'>
+        {playlistTracks?playlistTracks.map(track=> {
+          return (<Track track={track} handleClick={()=>{removeSong(track)}} functionType='-'/>)
+        }):""}
+      </div>
 
-      {playlistTracks?playlistTracks.map(track=> {
-        return (<Track track={track} handleClick={()=>{removeSong(track)}} functionType='-'/>)
-      }):""}
-    </div>
+    </>
   );
 }
   

@@ -26,4 +26,5 @@
 .Track button:hover {
     cursor: pointer;
     color: gray;
+    background: none;
 }

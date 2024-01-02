@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import './Authorize.css'
 
 function Authorize(props) {
     const scopes = 'playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public'; 
@@ -7,9 +8,7 @@ function Authorize(props) {
     const authorizeUri = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectURI}&response_type=token&scope=${scopes}&show_dialog=true`
 
     return (
-      <div className="Authorize">
-        <a href={authorizeUri}><button>login</button></a>
-      </div>
+      <p><a href={authorizeUri}><button>login</button></a></p>
     );
   }
   
