@@ -4,9 +4,19 @@ function SearchBar(props) {
     const setSearchResults = props.setSearchResults
     const spotifyApi = props.spotifyApi
     
+    //gets rid of the empty space at the end of the search input and searches using spotify api
     const search = () => {
-        spotifyApi.searchTracks(searchInput, {limit: 30})
-        .then((data)=>{setSearchResults(data.body.tracks.items)})
+      var tempSearchInput = searchInput;
+      var lastChar = tempSearchInput.charAt(tempSearchInput.length-1);
+
+      //gets rid of the empty space at the end of search input
+      while(lastChar == ' '){
+        tempSearchInput = tempSearchInput.substring(0, tempSearchInput.length-2);
+
+        lastChar = tempSearchInput.charAt(tempSearchInput.length-1);
+      }
+      spotifyApi.searchTracks(tempSearchInput, {limit: 30})
+      .then((data)=>{setSearchResults(data.body.tracks.items)})
     }
  
     return (

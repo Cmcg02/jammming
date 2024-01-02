@@ -16,8 +16,12 @@ function App() {
   const [searchInput, setSearchInput] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [playlistTracks, setPlaylistTracks] = useState([])
+  const [PlaylistName, setPlaylistName] = useState('')
+  const [playlistDescription, setPlaylistDescription] = useState('')
+  const [playlistID, setPlaylistID] = useState('')
   const [accessToken, setAccessToken] = useState('')
   
+  //extracts the accessToken from the url
   useEffect(()=>{
     var docURL = document.URL;
     if(docURL.includes('access_token')){
@@ -26,6 +30,12 @@ function App() {
     }
   }, [])
   spotifyApi.setAccessToken(accessToken)
+
+  const save = () => {
+    console.log(PlaylistName)
+    console.log(playlistDescription)
+    console.log(playlistTracks)
+  }
 
   return (
     <div className="App">
@@ -37,7 +47,8 @@ function App() {
         </div>
 
         <div className='Edit'>
-          <Playlist playlistTracks={playlistTracks} setPlaylistTracks={setPlaylistTracks} spotifyApi={spotifyApi}/>
+          <Playlist playlistTracks={playlistTracks} setPlaylistTracks={setPlaylistTracks}  spotifyApi={spotifyApi} setPlaylistDescription={setPlaylistDescription} setPlaylistName={setPlaylistName} setSearchInput={setSearchInput} searchInput={searchInput}/>
+          <button onClick={save}>Save</button>
         </div>
 
       </>):(<>

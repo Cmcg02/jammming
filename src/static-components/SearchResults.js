@@ -9,14 +9,14 @@ function SearchResults(props) {
     const setSearchInput = props.setSearchInput;
     const searchInput = props.searchInput
 
+    //adds song to playlist Tracks. and adds a space to the search input to update the playlist div
     const addSong = (track) => {
       let tempPlaylist = playlistTracks
-      let tempInput = searchInput
-      tempPlaylist.push(track)
-
-      
+      if(tempPlaylist.map(song=>song.name).indexOf(track.name)<0){
+        tempPlaylist.push(track)
+        setPlaylistTracks(tempPlaylist)
+      }
       setSearchInput(searchInput + ' ')
-
     }
 
     return (

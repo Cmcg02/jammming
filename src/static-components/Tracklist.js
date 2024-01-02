@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Track from "./Track";
 
 function Tracklist(props) {
