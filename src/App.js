@@ -18,7 +18,6 @@ function App() {
   const [playlistTracks, setPlaylistTracks] = useState([])
   const [PlaylistName, setPlaylistName] = useState('')
   const [playlistDescription, setPlaylistDescription] = useState('')
-  const [playlistID, setPlaylistID] = useState('')
   const [accessToken, setAccessToken] = useState('')
   
   //extracts the accessToken from the url
@@ -31,10 +30,17 @@ function App() {
   }, [])
   spotifyApi.setAccessToken(accessToken)
 
-  const save = () => {
+  const save = async () => {
     console.log(PlaylistName)
     console.log(playlistDescription)
     console.log(playlistTracks)
+    var id;
+
+    await spotifyApi.createPlaylist(PlaylistName, {'description': playlistDescription, 'public': true})
+    .then(data => {
+      id= data.body.id
+    })
+    spotifyApi.addTracksToPlaylist(id, playlistTracks.map(track => `spotify:track:${track.id}`))
   }
 
   return (
