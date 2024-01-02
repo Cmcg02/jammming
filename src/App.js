@@ -35,12 +35,22 @@ function App() {
     console.log(playlistDescription)
     console.log(playlistTracks)
     var id;
+    if (!PlaylistName) {
+      alert('please enter a name for the playlist')
+    }
 
-    await spotifyApi.createPlaylist(PlaylistName, {'description': playlistDescription, 'public': true})
-    .then(data => {
-      id= data.body.id
-    })
-    spotifyApi.addTracksToPlaylist(id, playlistTracks.map(track => `spotify:track:${track.id}`))
+    try{
+      await spotifyApi.createPlaylist(PlaylistName, {'description': playlistDescription, 'public': true})
+      .then(data => {
+        id= data.body.id
+      })
+      spotifyApi.addTracksToPlaylist(id, playlistTracks.map(track => `spotify:track:${track.id}`))
+      setPlaylistTracks([])}
+    catch(error){
+      alert('Access Token Expired, please sign in')
+      setAccessToken('')
+      setLoggedIn(false)
+    };
   }
 
   return (
@@ -49,7 +59,7 @@ function App() {
       {loggedIn?(<>
 
         <div className='Search'>
-          <SearchBar searchInput={searchInput} setSearchInput={setSearchInput} setSearchResults={setSearchResults} spotifyApi={spotifyApi}/>
+          <SearchBar searchInput={searchInput} setSearchInput={setSearchInput} setSearchResults={setSearchResults} spotifyApi={spotifyApi} setAccessToken={setAccessToken} setLoggedIn={setLoggedIn}/>
           <SearchResults searchResults={searchResults} setPlaylistTracks={setPlaylistTracks} playlistTracks={playlistTracks} setSearchInput={setSearchInput} searchInput={searchInput}/>
         </div>
 

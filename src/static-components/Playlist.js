@@ -27,12 +27,14 @@ function Playlist(props) {
     <>
       <input
         className="text-input"
+        id="playlist-name"
         placeholder='Playlist Name'
         type='text'
         onChange={event => setPlaylistName(event.target.value)}
       />
       <input
         className="text-input"
+        id="playlist-descrption"
         placeholder='Playlist Description'
         type='text'
         onChange={event => setPlaylistDescription(event.target.value)}

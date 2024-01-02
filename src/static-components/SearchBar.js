@@ -3,6 +3,7 @@ function SearchBar(props) {
     const setSearchInput = props.setSearchInput
     const setSearchResults = props.setSearchResults
     const spotifyApi = props.spotifyApi
+    const setAccessToken = props.setAccessToken
     
     //gets rid of the empty space at the end of the search input and searches using spotify api
     const search = () => {
@@ -15,8 +16,14 @@ function SearchBar(props) {
 
         lastChar = tempSearchInput.charAt(tempSearchInput.length-1);
       }
-      spotifyApi.searchTracks(tempSearchInput, {limit: 30})
-      .then((data)=>{setSearchResults(data.body.tracks.items)})
+      try{
+        spotifyApi.searchTracks(tempSearchInput, {limit: 30})
+        .then((data)=>{setSearchResults(data.body.tracks.items)})
+      }catch(error){
+        alert('Access Token Expired, please sign in')
+        setAccessToken('')
+      }
+
     }
  
     return (
