@@ -27,6 +27,11 @@ function App() {
       setAccessToken(docURL.split('#')[1].split('&')[0].split('=')[1]);
       setLoggedIn(true)
     }
+
+    setInterval(() => {
+      setLoggedIn(false)
+    }, 3600000);
+
   }, [])
   spotifyApi.setAccessToken(accessToken)
 
